@@ -1,0 +1,34 @@
+#!/bin/sh
+
+ipset -F dangerous
+
+echo "Doing China"
+wget -O /tmp/china.zone http://www.ipdeny.com/ipblocks/data/countries/cn.zone &> /dev/null
+for i in $(cat /tmp/china.zone); do
+  ipset -A dangerous $i
+done
+
+echo "Doing Russia"
+wget -O /tmp/russia.zone http://www.ipdeny.com/ipblocks/data/countries/ru.zone &> /dev/null
+for i in $(cat /tmp/russia.zone); do
+  ipset -A dangerous $i
+done
+
+echo "Doing Ukraine"
+wget -O /tmp/ukraine.zone http://www.ipdeny.com/ipblocks/data/countries/ua.zone &> /dev/null
+for i in $(cat /tmp/ukraine.zone); do
+  ipset -A dangerous $i
+done
+
+echo "Doing Turkey"
+wget -O /tmp/turkey.zone http://www.ipdeny.com/ipblocks/data/countries/tr.zone &> /dev/null
+for i in $(cat /tmp/turkey.zone); do
+  ipset -A dangerous $i
+done
+
+echo "Doing India"
+wget -O /tmp/india.zone http://www.ipdeny.com/ipblocks/data/countries/in.zone &> /dev/null
+for i in $(cat /tmp/india.zone); do
+  ipset -A dangerous $i
+done
+
